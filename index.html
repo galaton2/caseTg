@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Кейсы · Подарки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+<div id="app" class="app">
+
+  <!-- Верхняя панель: баланс и кулдаун -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand__dot"></span>
+      <span class="brand__name">DROP<span class="brand__name-accent">CASE</span></span>
+    </div>
+    <div class="balance-pill" id="balancePill">
+      <img src="assets/icons/coin.svg" alt="" class="balance-pill__icon">
+      <span id="balanceValue">0</span>
+      <span class="balance-pill__label">GC</span>
+    </div>
+  </header>
+
+  <!-- Табы -->
+  <nav class="tabs" id="tabs">
+    <button class="tabs__btn is-active" data-tab="cases">Кейсы</button>
+    <button class="tabs__btn" data-tab="inventory">Инвентарь<span class="tabs__badge" id="invBadge" hidden></span></button>
+  </nav>
+
+  <!-- Экран: список кейсов -->
+  <main class="screen" id="screen-cases">
+    <section class="case-grid" id="caseGrid">
+      <!-- карточки кейсов рендерятся из JS -->
+    </section>
+
+    <section class="how">
+      <h3 class="how__title">Как это работает</h3>
+      <ol class="how__list">
+        <li>Открой кейс — бесплатный раз в 4 часа или платный за звёзды.</li>
+        <li>Крути рулетку и получай предмет в инвентарь.</li>
+        <li>Продай предмет за монеты GC или выведи как настоящий подарок Telegram.</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- Экран: инвентарь -->
+  <main class="screen" id="screen-inventory" hidden>
+    <section class="inventory-list" id="inventoryList">
+      <div class="empty-state" id="invEmpty">
+        <img src="assets/icons/box_common.svg" class="empty-state__icon" alt="">
+        <p>Пока пусто. Открой кейс, чтобы получить первый предмет.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Оверлей открытия кейса -->
+  <div class="overlay" id="openOverlay" hidden>
+    <div class="overlay__panel">
+      <button class="overlay__close" id="overlayClose" aria-label="Закрыть">✕</button>
+      <h2 class="overlay__title" id="overlayCaseName">Кейс</h2>
+
+      <div class="reel-viewport" id="reelViewport">
+        <div class="reel-pointer"></div>
+        <div class="reel-track" id="reelTrack"></div>
+        <div class="reel-fade reel-fade--left"></div>
+        <div class="reel-fade reel-fade--right"></div>
+      </div>
+
+      <button class="btn btn--primary" id="spinBtn">Крутить</button>
+
+      <!-- Результат -->
+      <div class="result" id="resultPanel" hidden>
+        <div class="result__glow" id="resultGlow"></div>
+        <img id="resultIcon" class="result__icon" src="" alt="">
+        <div class="result__name" id="resultName"></div>
+        <div class="result__rarity" id="resultRarity"></div>
+        <div class="result__actions">
+          <button class="btn btn--ghost" id="resultSellBtn">Продать за <span id="resultSellValue">0</span> GC</button>
+          <button class="btn btn--gold" id="resultWithdrawBtn">Вывести подарком</button>
+        </div>
+        <button class="btn btn--secondary" id="resultCloseBtn">Забрать в инвентарь</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Тосты -->
+  <div class="toast" id="toast" hidden></div>
+</div>
+
+<script src="js/sounds.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

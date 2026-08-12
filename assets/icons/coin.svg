@@ -1,0 +1,9 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="coinG" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#fff3c4"/><stop offset="0.55" stop-color="#ffd15c"/><stop offset="1" stop-color="#c98a12"/>
+    </radialGradient>
+  </defs>
+  <circle cx="12" cy="12" r="10" fill="url(#coinG)" stroke="#8a5a06" stroke-width="1"/>
+  <text x="12" y="16.5" font-family="Rajdhani, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#7a4e07">G</text>
+</svg>
